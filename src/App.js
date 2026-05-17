@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 // ─── SEED DATA ───────────────────────────────────────────────────────────────
 const THRUST_AREAS = ["Revenue Growth", "Customer Experience", "Operational Excellence", "People & Culture", "Innovation", "Compliance & Risk"];
@@ -457,8 +457,6 @@ function GoalForm({ currentUser, myGoals, goals, setGoals, showNotif, setView, a
 // ─── TEAM GOALS (MANAGER) ─────────────────────────────────────────────────────
 function TeamGoals({ currentUser, users, teamMembers, teamGoals, goals, setGoals, addAudit, showNotif }) {
   const [selected, setSelected] = useState(teamMembers[0]?.id);
-  const [editingGoal, setEditingGoal] = useState(null);
-  const [comment, setComment] = useState("");
 
   const member = users.find(u => u.id === selected);
   const memberGoals = teamGoals.filter(g => g.employeeId === selected);
@@ -691,7 +689,7 @@ function CheckIn({ currentUser, users, myGoals, teamGoals, teamMembers, goals, s
 
 // ─── REPORTS ──────────────────────────────────────────────────────────────────
 function Reports({ currentUser, users, goals }) {
-  const employees = users.filter(u => u.role === "employee");
+  
 
   function exportCSV() {
     const rows = [["Employee", "Goal Title", "Thrust Area", "UoM", "Target", "Weightage", "Q1 Actual", "Q2 Actual", "Q1 Score", "Q2 Score", "Status"]];
@@ -954,7 +952,7 @@ function GoalTable({ goals }) {
 }
 
 function GoalCard({ goal, onDelete }) {
-  const { bg, color, label } = getStatusBadge(goal.status);
+  const _unused = getStatusBadge(goal.status); // eslint-disable-line
   return (
     <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: 18 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
