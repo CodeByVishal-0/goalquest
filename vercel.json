@@ -1,0 +1,9 @@
+{
+  "buildCommand": "react-scripts build",
+  "outputDirectory": "build",
+  "framework": "create-react-app",
+  "env": {
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "CI": "false"
+  }
+}
